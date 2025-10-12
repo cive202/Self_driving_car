@@ -5,13 +5,16 @@ class Car{
         this.width = width;
         this.height = height;
 
-        this.control = new Controls();
-
+       
         this.speed = 0;
         this.acclerataion = 0.2 
         this.maxspeed = 3;
         this.friction = 0.05;
         this.angle = 0;
+
+        this.sensor = new Sensor(this)
+        this.control = new Controls();
+
     }
     draw(ctx){
         ctx.save()
@@ -37,11 +40,15 @@ class Car{
 
         ctx.fill();
 
+
         ctx.restore();
+        
+        this.sensor.draw(ctx)
     }
 
     update(){
         this.#move()
+        this.sensor.update();
     }
 
     #move(){
