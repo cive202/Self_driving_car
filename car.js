@@ -6,15 +6,81 @@ class Car{
         this.height = height;
 
         this.control = new Controls();
+
+        this.speed = 0;
+        this.acclerataion = 0.2 
+        this.maxspeed = 3;
+        this.friction = 0.05;
+        this.angle = 0;
     }
     draw(ctx){
-        ctx.beginPath();
+        ctx.save()
+        ctx.translate(this.x,this.y);
+        ctx.rotate(-this.angle)
+        ctx.beginPath();//Start a new drawing path — forget any previous shapes I was drawing
         ctx.rect(
-            this.x - this.width/2,
-            this.y-this.height/2,
+            - this.width/4,
+            -this.height/4-22,
+            this.width/2,
+            this.height
+        );
+        ctx.fillStyle = "blue";     // Set fill color
+        ctx.fill();
+
+        ctx.rect(
+            - this.width/2,
+            -this.height/2,
             this.width,
             this.height
         );
+        ctx.fillStyle = "black";     // Set fill color
+
         ctx.fill();
+
+        ctx.restore();
+    }
+
+    update(){
+        this.#move()
+    }
+
+    #move(){
+        if(this.control.forward){
+            this.speed +=this.acclerataion;
+        }
+        if(this.control.reverse){
+            this.speed -=this.acclerataion;
+        }
+        if(this.speed>this.maxspeed){
+            this.speed = this.maxspeed;
+        }
+        if(this.speed<-this.maxspeed/2){
+            this.speed =-this.maxspeed/2;
+        }
+       if(this.speed>0){
+           this.speed -= this.friction;
+       }
+       if(this.speed<0){
+           this.speed +=this.friction;
+       }
+       if(Math.abs(this.speed)<this.friction){
+        this.speed = 0;
+       }
+       if(this.speed!=0){
+        const flip = this.speed>0?1:-1;
+
+       
+
+            if(this.control.left){
+                this.angle += 0.03*flip;
+            }
+            if(this.control.right){
+                this.angle -= 0.03*flip;
+       }
+    }
+       this.x -=Math.sin(this.angle)*this.speed;
+       this.y -=Math.cos(this.angle)*this.speed;
     }
 }
+
+        
