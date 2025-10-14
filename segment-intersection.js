@@ -9,10 +9,16 @@ const D = {x:250, y:200};
 
 const ctx = canvas.getContext("2d");
 
+const mouse = {x:0,y:0 };
+document.onmousemove=(event)=>{
+    mouse.x=event.x;
+    mouse.y=event.y;
+}
+
 let t= -1;
 animate();
 function animate(){ 
-
+    const radius = 50 
     ctx.clearRect(0,0,canvas.width,canvas.height) //the last two parameters are the area where the rectangles will be clear
 
     ctx.beginPath();
