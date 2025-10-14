@@ -11,7 +11,9 @@ class Car{
         this.friction=0.05;
         this.angle=0;
         this.damaged = false    
-        this.sensor=new Sensor(this);
+        if(controlType!="DUMMY"){
+            this.sensor=new Sensor(this);
+        }
         this.controls=new Controls(controlType);
         
     }
@@ -22,7 +24,9 @@ class Car{
             this.polygon = this.#createpolygon();
             this.damaged = this.#assessDamage(roadBorders)
         }
+        if(this.sensor){
         this.sensor.update(roadBorders);
+        }
     }
     #assessDamage(roadBorders){
         for(let i = 0;i< roadBorders.length;i++){
@@ -123,6 +127,8 @@ class Car{
 
         ctx.closePath();  // connect last point to first
         ctx.fill()
+        if(this.sensor){
         this.sensor.draw(ctx);
+        }
     }
 }
