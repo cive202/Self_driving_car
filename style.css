@@ -1,10 +1,90 @@
-body{
+/* ---------------------------
+   Reset & Basic Layout
+---------------------------- */
+body {
     margin: 0;
-    background: darkgrey;
+    padding: 0;
+    background: #2c2c2c;       /* dark gray background */
     overflow: hidden;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;    /* start from top */
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#myCanvas {
-    background-color: lightgrey;
+/* ---------------------------
+   Vertical Buttons
+---------------------------- */
+#verticalButtons {
+    display: flex;
+    flex-direction: column;
+    position: fixed;           /* always visible */
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+/* ---------------------------
+   Buttons Styling
+---------------------------- */
+button {
+    background: #444;          /* dark button background */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 4px 0;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: #007bff;       /* blue hover */
+    transform: scale(1.05);
+}
+
+/* ---------------------------
+   Car Canvas Styling
+---------------------------- */
+#carCanvas {
+    background: #333;          /* dark asphalt road */
+    border: 2px solid #222;
+    border-radius: 8px;
+    margin: 10px;
+    display: block;
+}
+
+/* ---------------------------
+   Network Canvas Styling
+---------------------------- */
+#networkCanvas {
+    background: #000;          /* black background for neural network */
+    border: 2px solid #222;
+    border-radius: 8px;
+    margin: 10px;
+    display: block;
+}
+
+/* ---------------------------
+   Optional Enhancements
+---------------------------- */
+/* Make the lane lines appear moving (if you use lineDashOffset in JS) */
+.lane-line {
+    stroke: white;
+    stroke-width: 5px;
+    stroke-dasharray: 20, 15;
+}
+
+/* Road edges */
+.road-border {
+    stroke: yellow;
+    stroke-width: 10px;
+    fill: none;
+}
+
+/* Grass edges for realism */
+.grass-left, .grass-right {
+    background-color: #2e7d32;  /* dark green grass */
 }

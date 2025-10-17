@@ -28,9 +28,11 @@ class Road{
     }
 
     draw(ctx){
-        ctx.lineWidth=5;
-        ctx.strokeStyle="white";
+        ctx.fillStyle="#2f2f2f";
+        ctx.fillRect(this.left,this.top,this.width,this.bottom-this.top);
 
+        ctx.lineWidth=4;
+        ctx.strokeStyle="rgba(255,255,255,0.9)";
         for(let i=1;i<=this.laneCount-1;i++){
             const x=lerp(
                 this.left,
@@ -38,7 +40,7 @@ class Road{
                 i/this.laneCount
             );
             
-            ctx.setLineDash([20,20]);
+            ctx.setLineDash([30,25]);
             ctx.beginPath();
             ctx.moveTo(x,this.top);
             ctx.lineTo(x,this.bottom);
@@ -46,11 +48,17 @@ class Road{
         }
 
         ctx.setLineDash([]);
+        ctx.lineWidth=8;
+        ctx.strokeStyle="#FFD700";
         this.borders.forEach(border=>{
             ctx.beginPath();
             ctx.moveTo(border[0].x,border[0].y);
             ctx.lineTo(border[1].x,border[1].y);
             ctx.stroke();
         });
+
+        ctx.fillStyle="#2e7d32";
+        ctx.fillRect(0,this.top,this.left,this.bottom-this.top);
+        ctx.fillRect(this.right,this.top,ctx.canvas.width-this.right,this.bottom-this.top);
     }
 }
