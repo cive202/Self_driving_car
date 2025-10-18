@@ -17,7 +17,7 @@ if(localStorage.getItem("bestBrain")){
      cars[i].brain = JSON.parse(
         localStorage.getItem("bestBrain"))
     if(i!=0){
-        NeuralNetwork.mutate(cars[i].brain,0.1);
+        NeuralNetwork.mutate(cars[i].brain,0.2);
     }
     }
 }
@@ -40,7 +40,7 @@ const traffic = [
     new Car(road.getLaneCenter(0), -1450, 30, 50, "DUMMY", 2),
     new Car(road.getLaneCenter(1), -1470, 30, 50, "DUMMY", 2),
 // Move the car in lane 2 a bit further down
-    new Car(road.getLaneCenter(2), -1550, 30, 50, "DUMMY", 2),
+    new Car(road.getLaneCenter(2), -1600, 30, 50, "DUMMY", 2),
 
 
     // 🔹 Narrow escape zone

@@ -36,8 +36,8 @@ function polysIntersect(poly1,poly2){
 
 function getRGBA(value){
     const alpha = Math.abs(value);
-    const R = value < 0 ? 0 : 225;
-    const G = R;
-    const B = value > 0 ? 0 : 225;
+    const R = value > 0 ? 0 : 225;
+    const G = value < 0 ? 0 : 225;
+    const B = 0;
     return "rgba(" + R + "," + G + "," + B + "," + alpha + ")";
 }
