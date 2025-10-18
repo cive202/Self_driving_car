@@ -162,6 +162,6 @@ Contributions are welcome! To contribute:
 
 ## ✉️ Contact
 
-**Your Name** — [your.email@example.com](mailto:your.email@example.com)
+**Utsav Paneru** — [civecodes@gmail.com](mailto:civecodes@gmail.com)
 
 > Built with ❤️ and pure JavaScript — Neural Networks from Scratch.
